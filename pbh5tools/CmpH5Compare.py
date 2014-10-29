@@ -63,11 +63,10 @@ def cmpH5Summarize(inCmp, movieSummary = True, refSummary = True):
     tstr   = "filename: %s\nversion:  %s\nn reads:  %d\nn refs:   " + \
         "%d\nn movies: %d\nn bases:  %d\navg rl:   %d\navg acc:  %g"
     
-    rl  = [ r.readLength for r in reader ]
-    acc = [ r.accuracy for r in reader ]
+    rl,acc,mov = zip(*[(r.readLength,r.accuracy,r.movieInfo[0]) for r in reader ])
     
     summaryStr = (tstr % (os.path.basename(reader.file.filename), reader.version, len(reader),
-                          len(reader.referenceInfoTable), len(reader.movieInfoTable), NP.sum(rl),
+                          len(reader.referenceInfoTable), len(set(mov)), NP.sum(rl),
                           NP.round(NP.mean(rl)), NP.round(NP.mean(acc), 4)))
     eTbl = Tbl(nBases = Sum(ReadLength), avgReadLength = Mean(ReadLength), 
                avgAccuracy = Mean(Accuracy))

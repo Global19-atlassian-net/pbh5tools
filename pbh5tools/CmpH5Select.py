@@ -112,7 +112,10 @@ def doSelect(inCmpFile, outCmpFile, idxs):
         # trim the other datasets
         trimDataset(fmt.ALN_GROUP, fmt.ALN_ID, inCmp, outCmp, fmt)
         trimDataset(fmt.REF_GROUP, fmt.REF_ID, inCmp, outCmp, fmt)
-        trimDataset(fmt.MOVIE_INFO, fmt.MOVIE_ID, inCmp, outCmp, fmt)
+        # trimDataset(fmt.MOVIE_INFO, fmt.MOVIE_ID, inCmp, outCmp, fmt)
+        # copy Movie dataset whole
+        for dsName in inCmp[fmt.MOVIE_INFO].keys():
+            copyDataset('/'.join([fmt.MOVIE_INFO,dsName]), inCmp, outCmp, None, fmt)
 
         # other groups will go over whole hog
         copyGroup(fmt.FILE_LOG, inCmp, outCmp)
