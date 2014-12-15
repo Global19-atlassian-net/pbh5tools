@@ -3,9 +3,9 @@ import tempfile
 import logging
 import unittest
 import shutil
-
-from pbcore.io.CmpH5IO import CmpH5Reader
 import sys
+
+from pbcore.io import CmpH5Reader
 from pbh5tools.CmpH5Select import cmpH5Select
 from pbh5tools.CmpH5Merge import cmpH5Merge
 
