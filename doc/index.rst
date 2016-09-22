@@ -28,6 +28,12 @@ To install ``pbh5tools``, run the following command from the ``pbh5tools`` root 
 
    python setup.py install
 
+If you do not have `root` or `sudo` permissions, you can install locally by:
+
+1. Installing pysam, numpy, Cython, and h5py to your home directory.  
+              pip install --user --upgrade numpy h5py pysam cython
+2. Running `python setup.py install --user`
+
 ####################
 Tool: bash5tools.py
 ####################
@@ -80,10 +86,10 @@ Usage
 Examples
 --------
 
-Extracting all Raw reads from ``input.bas.h5`` without any filtering
-and exporting to FASTA (``myreads.fasta``): ::
+Extracting all subreads reads from ``input.bas.h5`` without any filtering
+and exporting to a FASTA file named ``myreads.fasta``: ::
 
-    python bash5tools.py input.bas.h5 --outFilePrefix myreads --outType fasta --readType Raw
+    python bash5tools.py --outFilePrefix myreads --outType fasta --readType subreads input.bas.h5
 
 Extracting all CCS reads from ``input.bas.h5`` that have read lengths
 larger than 100 and exporting to FASTQ (``myreads.fastq``): ::
