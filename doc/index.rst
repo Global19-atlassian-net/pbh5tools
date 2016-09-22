@@ -29,9 +29,12 @@ To install ``pbh5tools``, run the following command from the ``pbh5tools`` root 
    python setup.py install
 
 If you do not have `root` or `sudo` permissions, you can install locally by:  
+
 1. Installing pysam, numpy, Cython, and h5py to your home directory.  
               pip install --user --upgrade numpy h5py pysam cython
-2. Running `python setup.py install --user`
+2. Running 
+              python setup.py install --user
+
 
 ####################
 Tool: bash5tools.py
